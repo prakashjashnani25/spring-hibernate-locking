@@ -1,0 +1,42 @@
+<configuration>
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <file>./test.log</file>
+        <append>false</append>
+        <!-- <encoder>
+            <Pattern>%-5p [%t]: %c{1} - %m%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder> -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss.SSS} - %-5p [%t]: %c{1} - %msg%n
+			</Pattern>
+		</encoder>
+    </appender>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+       <!--  <encoder>
+            <Pattern>%-5p [%t]: %c{1} - %m%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder> -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss.SSS} - %-5p [%t]: %c{1} - %msg%n
+			</Pattern>
+		</encoder>
+    </appender>
+
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.hibernate" level="warn"/>
+    <logger name="org.hibernate.event.internal" level="debug"/>
+
+    <logger name="com.prakas" level="debug"/>
+    <root>
+        <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
